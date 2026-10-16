@@ -1,0 +1,17 @@
+.cinematic-tooling-page { min-height: 100vh; padding: clamp(24px, 4vw, 64px); color: #f4ead8; background: radial-gradient(circle at 20% 0%, #31495c 0, #101822 42%, #080d13 100%); font-family: Inter, ui-sans-serif, system-ui, sans-serif; box-sizing: border-box; }
+.cinematic-tooling-header { display: flex; align-items: end; justify-content: space-between; gap: 24px; max-width: 1600px; margin: 0 auto 18px; }
+.cinematic-tooling-header p { margin: 0 0 8px; color: #eab67c; font-size: 12px; font-weight: 800; letter-spacing: .22em; }
+.cinematic-tooling-header h1 { margin: 0; font-family: Georgia, serif; font-size: clamp(30px, 4vw, 58px); font-weight: 500; }
+.cinematic-tooling-header a { color: #f0d5ae; text-underline-offset: 5px; }
+.cinematic-tooling-note { max-width: 920px; margin: 0 auto 34px; color: #bdc8ce; line-height: 1.6; }
+.cinematic-demo-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; max-width: 1600px; margin: auto; }
+.cinematic-demo-grid h2 { margin: 0 0 12px; color: #d9c8ad; font-size: 14px; letter-spacing: .12em; text-transform: uppercase; }
+.cinematic-demo-frame, .cinematic-player-shell { position: relative; aspect-ratio: 16 / 9; overflow: hidden; border: 1px solid #ffffff20; border-radius: 12px; background: #111923; box-shadow: 0 24px 65px #0007; }
+.cinematic-demo-camera { position: absolute; inset: 0; }
+.cinematic-room { position: absolute; inset: 0; overflow: hidden; background: linear-gradient(145deg, #263a4c, #111923 72%); }
+.cinematic-window { position: absolute; left: 8%; top: 10%; width: 27%; height: 44%; border: .6vw solid #202c37; background: linear-gradient(135deg, #d6e6e9, #8da8b7); box-shadow: inset 0 0 4vw #fff7d844; }
+.cinematic-desk { position: absolute; left: 6%; right: 6%; bottom: 7%; height: 18%; border-radius: 1vw 1vw 0 0; background: #503f36; box-shadow: 0 -.7vw 2vw #0005; }
+.cinematic-character { position: absolute; left: 50%; bottom: 9%; width: 29%; height: 72%; translate: -50% 0; transform-origin: 50% 90%; }
+.placeholder-label { position: absolute; top: 4%; right: 4%; margin: 0; color: #ffffff88; font-size: clamp(7px, .75vw, 12px); font-weight: 700; letter-spacing: .13em; }
+@media (max-width: 900px) { .cinematic-demo-grid { grid-template-columns: 1fr; } .cinematic-tooling-header { align-items: start; flex-direction: column; } }
+@media (prefers-reduced-motion: reduce) { .cinematic-demo-camera, .cinematic-character { animation: none !important; transition: none !important; } }

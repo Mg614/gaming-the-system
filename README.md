@@ -2,6 +2,13 @@
 
 An interactive cinematic serious game exploring how metrics and incentives shape student behaviour.
 
+## Collaboration
+
+Work on feature branches and preserve the completed opening. See the
+[workflow](docs/collaboration/WORKFLOW.md),
+[integration contract](docs/collaboration/INTEGRATION_CONTRACT.md), and
+[source of truth](docs/collaboration/SOURCE_OF_TRUTH.md).
+
 ## 当前版本
 
 Scene 1–3 的连续第一人称可玩原型。浏览器保持摄影机视口，办公室与教室通过门口转场相连。Scene 3 支持任意顺序查看三名学生，全部查看后返回原办公室。到此结束，未实现 Level 1。

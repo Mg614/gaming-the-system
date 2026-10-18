@@ -1,6 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { checklistPresentation } from '../../src/cinematics/level2/checklistPresentation.ts';
+import { alexBlinkAt, level2Performance } from '../../src/cinematics/level2/level2Performance.ts';
+import { checklistPresentation, checkingPenState } from '../../src/cinematics/level2/checklistPresentation.ts';
 import { getLevel2Shots, sequenceDuration, shotAt, type Level2Request } from '../../src/cinematics/level2/level2Timeline.ts';
 
 const request = (phase: string, category?: string): Level2Request => ({
@@ -71,4 +72,48 @@ test('evidence draws before a criterion is marked and malformed progress stays s
  test('duration ends exactly on the preview slider step', () => {
   assert.equal(sequenceDuration(getLevel2Shots(request('three', 'mixed-broad'))), 15.6);
   assert.equal(sequenceDuration(getLevel2Shots(request('100'))), 19.2);
+});
+
+
+test('integrated checking edits shorten while all checklist stages finish before their handoff', () => {
+  assert.equal(level2Performance('three-checklist', 1).view, 'checking');
+  assert.equal(level2Performance('three-checklist', 3).view, 'portrait');
+  const inserts: [string, number][] = [];
+  for (const [id, duration, count] of [['six-checklist', 9.5, 6], ['ten', 4.8, 10], ['twenty-five', 5.1, 25], ['hundred', 5.9, 100]] as const) {
+    let seconds = 0;
+    let completed = 0;
+    for (let i = 0; i <= Math.round(duration * 100); i++) {
+      const state = level2Performance(id, i / 100);
+      if (state.view === 'insert') seconds += .01;
+      const checklist = checklistPresentation(count, state.progress!);
+      assert.ok(checklist.checked.size >= completed);
+      completed = checklist.checked.size;
+      if (state.view === 'insert') {
+        const pen = checkingPenState(count, state.progress!);
+        assert.ok(pen.criterion >= 1 && pen.criterion <= count);
+        assert.ok(pen.mark >= 0 && pen.mark <= 1);
+        assert.equal(pen.mark, checklist.checked.has(pen.criterion - 1) ? 1 : checklist.markProgress);
+      }
+    }
+    assert.equal(completed, count);
+    inserts.push([id, seconds]);
+  }
+  assert.ok(inserts[1][1] > inserts[2][1] && inserts[2][1] > inserts[3][1]);
+});
+
+test('reaction pauses, irregular blinking and seeking derive only from supplied time', () => {
+  assert.equal(level2Performance('perfect', 3).expression, 'pleased');
+  assert.equal(level2Performance('reflection', 1.6).expression, 'pleased');
+  assert.equal(level2Performance('reflection', 1.9).expression, 'uncertain');
+  assert.equal(level2Performance('reflection', 2.3).uncertainty, 1);
+  assert.equal(alexBlinkAt(1.34), true);
+  assert.equal(alexBlinkAt(1.6), false);
+  for (const t of [0, 1.34, 1.9, 3.7]) {
+    const expected = level2Performance('reflection', t);
+    level2Performance('reflection', 5.1);
+    level2Performance('reflection', 0);
+    assert.deepEqual(level2Performance('reflection', t), expected);
+    assert.equal(alexBlinkAt(t), alexBlinkAt(t));
+  }
+  assert.equal(checkingPenState(3, 1).mark, 1, 'pen holds the stroke endpoint during lift');
 });

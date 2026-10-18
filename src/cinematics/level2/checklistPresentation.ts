@@ -17,3 +17,16 @@ export function checklistPresentation(count: number, progress: number, allComple
   const targets = p === 1 || allComplete ? [] : batches[step];
   return { checked, targets, within, linkProgress: Math.min(1, within / 0.65), markProgress: Math.max(0, Math.min(1, (within - 0.65) / 0.15)) };
 }
+
+/** Anchor the one real pen to the checklist's current batch and exact drawn stroke. */
+export function checkingPenState(count: number, progress: number) {
+  const state = checklistPresentation(count, progress);
+  const target = (state.targets.length ? state : checklistPresentation(count, 1 - 1e-8)).targets[0];
+  const done = state.checked.has(target);
+  return {
+    criterion: target + 1,
+    mark: done ? 1 : state.markProgress,
+    approach: 1 - Math.min(1, state.within / .5),
+    lift: Math.max(0, Math.min(1, (state.within - .84) / .16)),
+  };
+}

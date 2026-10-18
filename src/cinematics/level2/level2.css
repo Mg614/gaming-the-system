@@ -62,3 +62,7 @@
 /* The record is a screen on a desk, with a hinged keyboard plane. */
 .l2-system-success { border-radius: .7cqw .7cqw .2cqw .2cqw; transform: perspective(900px) rotateY(9deg) rotateX(-3deg); }
 .l2-system-success::after { content: ""; position: absolute; left: -5%; right: -5%; top: 100%; height: 17%; transform-origin: top; transform: perspective(300px) rotateX(42deg); background: repeating-linear-gradient(90deg, transparent 0 1.4cqw, #37372f44 1.4cqw 1.5cqw), repeating-linear-gradient(#777568 0 .55cqw, #37372f .55cqw .65cqw); border: .5cqw solid #777568; border-bottom: .6cqw solid #45443c; border-radius: 0 0 .6cqw .6cqw; box-shadow: 0 1cqw 1cqw #100b0766; }
+
+/* Portrait reactions keep the face clear while the live completion record remains. */
+.l2-shot-perfect .l2-paper-placement, .l2-shot-reflection .l2-paper-placement { width: 31%; right: 3%; height: 62%; top: 17%; }
+.l2-shot-perfect .l2-system-success, .l2-shot-reflection .l2-system-success { display: none; }

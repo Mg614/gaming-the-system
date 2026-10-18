@@ -23,10 +23,10 @@ const THREE: readonly Shot[] = [
   { id: 'entry', storyboard: 'CIN2-S01', duration: 1.8 },
   { id: 'pattern', storyboard: 'CIN2-S02', duration: 4.6 },
   { id: 'three-checklist', storyboard: 'CIN2-S03', duration: 9.2, dialogue: [
-    { start: 0.15, end: 2.05, speaker: 'Alex', text: 'I’ve completed all three requirements!' },
-    { start: 2.15, end: 4.35, speaker: 'You', text: 'And what about the other parts of your learning?' },
-    { start: 4.95, end: 7.15, speaker: 'Alex', text: 'Other parts? Are those being graded too?' },
-    { start: 7.3, end: 9.15, speaker: 'You', text: 'Maybe I’m still missing something...' },
+    { start: 2.8, end: 4.1, speaker: 'Alex', text: 'I’ve completed all three requirements!' },
+    { start: 4.2, end: 5.85, speaker: 'You', text: 'And what about the other parts of your learning?' },
+    { start: 6.25, end: 7.45, speaker: 'Alex', text: 'Other parts? Are those being graded too?' },
+    { start: 7.55, end: 9.15, speaker: 'You', text: 'Maybe I’m still missing something...' },
   ] },
 ];
 const SIX: readonly Shot[] = [

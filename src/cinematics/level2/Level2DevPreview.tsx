@@ -109,7 +109,7 @@ export default function Level2DevPreview() {
       <div className="l2-preview-viewport"><div className="l2-preview-stage">
         <Level2ConsequencesSequence key={request.requestId} request={request} elapsed={elapsed} active={playing && !completed && pageVisible} reducedMotion={query.get('reduced') === '1' ? true : undefined} onComplete={complete} />
       </div></div>
-      <footer className="l2-preview-footer" data-completion-count={events.length} data-completion-ids={events.map(e => e.requestId).join(',')}><p role="status" data-complete={completed}>{event}</p><p>INTERIM · Mock inputs only. Checking previews one reusable three-shot Alex sequence; other Alex performances remain reference prototypes. Full chain simulates gameplay handoffs.</p></footer>
+      <footer className="l2-preview-footer" data-completion-count={events.length} data-completion-ids={events.map(e => e.requestId).join(',')}><p role="status" data-complete={completed}>{event}</p><p>CANDIDATE · Mock inputs only. Alex checking and facial reactions are integrated across Level 2. Full chain simulates gameplay handoffs. Final visual acceptance is pending.</p></footer>
     </main>
   );
 }

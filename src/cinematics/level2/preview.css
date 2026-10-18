@@ -1,0 +1,22 @@
+.l2-preview { min-height: 100svh; background: #11110f; color: #d6d1c3; display: flex; flex-direction: column; font: 12px/1.4 Arial, sans-serif; }
+.l2-preview-header { display: flex; align-items: center; justify-content: space-between; padding: 13px 24px 8px; gap: 20px; }
+.l2-preview-header span { font-size: 9px; letter-spacing: .15em; color: #c4a87d; }
+.l2-preview h1 { font: 400 21px Georgia, serif; margin: 3px 0 0; color: #ece5d3; }
+.l2-preview a { color: #cdbb9a; text-underline-offset: 3px; }
+.l2-preview-nav { display: flex; flex-wrap: wrap; gap: 5px; padding: 4px 24px 9px; }
+.l2-preview-nav a { padding: 5px 10px; color: #a9a99d; border: 1px solid #4b4a4055; text-decoration: none; }
+.l2-preview-nav a:hover, .l2-preview-nav a[aria-current] { color: #eedcb7; background: #a38c5e25; border-color: #a38c5e75; }
+.l2-preview-tools { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; padding: 7px 24px; border-top: 1px solid #ffffff0c; border-bottom: 1px solid #ffffff0c; }
+.l2-preview-tools button, .l2-preview-tools select { color: #e2d8c3; background: #292921; border: 1px solid #68634e; border-radius: 3px; padding: 5px 10px; font-size: 11px; }
+.l2-preview-tools label { display: flex; gap: 7px; align-items: center; font-size: 11px; }
+.l2-preview-tools .l2-preview-scrub { flex: 1; min-width: 180px; }
+.l2-preview-tools input { width: 100%; accent-color: #ceaa71; }
+.l2-preview-tools output { font-variant-numeric: tabular-nums; min-width: 75px; }
+.l2-preview-tools > span { font-size: 10px; color: #c2b18d; }
+.l2-preview-viewport { display: grid; place-items: center; flex: 1; padding: 12px 24px; }
+.l2-preview-stage { width: min(100%, calc((100svh - 228px) * 16 / 9)); aspect-ratio: 16 / 9; box-shadow: 0 12px 50px #0007; }
+.l2-preview-footer { padding: 0 24px 12px; font-size: 10px; color: #96998c; }
+.l2-preview-footer p { margin: 4px 0; }
+.l2-preview-footer p[role=status] { color: #c7b991; min-height: 15px; }
+.l2-preview-warning { margin: 5px 24px; color: #edc896; }
+@media (max-width: 650px) { .l2-preview-header, .l2-preview-tools { padding-left: 12px; padding-right: 12px; } .l2-preview-nav { padding-left: 12px; padding-right: 12px; } .l2-preview-viewport { padding: 10px 0; } .l2-preview-stage { width: 100%; } .l2-preview-tools { gap: 7px; } }

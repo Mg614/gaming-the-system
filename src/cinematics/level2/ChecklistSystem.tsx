@@ -1,4 +1,4 @@
-import type { CSSProperties } from 'react';
+import type { CSSProperties, ReactNode } from 'react';
 import { checklistPresentation } from './checklistPresentation';
 import './checklist.css';
 
@@ -12,6 +12,8 @@ export interface ChecklistSystemProps {
   progress: number;
   allComplete?: boolean;
   reducedMotion?: boolean;
+  /** Optional cinematic prop, anchored to an actual checkbox (1-based). */
+  markOverlay?: { criterion: number; content: ReactNode };
 }
 
 // These are presentation notes, never gameplay rules or result classifications.
@@ -40,6 +42,7 @@ export function ChecklistSystem({
   progress,
   allComplete = false,
   reducedMotion = false,
+  markOverlay,
 }: ChecklistSystemProps) {
   const safeProgress = Math.min(1, Math.max(0, Number.isFinite(progress) ? progress : 0));
   const { checked, targets, linkProgress, markProgress } = checklistPresentation(count, safeProgress, allComplete);
@@ -141,6 +144,7 @@ export function ChecklistSystem({
                       >
                         <span className="l2-checklist-box">
                           {(done || active) && <svg viewBox="0 0 20 20"><path d="M3 10.5 8 15 18 3" pathLength={1} strokeDasharray="1" strokeDashoffset={done ? 0 : reducedMotion ? 1 : 1 - markProgress} /></svg>}
+                          {markOverlay?.criterion === index + 1 && markOverlay.content}
                         </span>
                         <span className="l2-checklist-row-label">{label}</span>
                         {dense && <span className={`l2-checklist-evidence-ref${active ? ' is-linking' : ''}`}>{done || active ? evidence.id : '·'}</span>}

@@ -14,6 +14,7 @@ import { clamp01 } from '../shared/engine/timeline/animationMath';
 import { ChecklistSystem, type ChecklistCount, type ChecklistMode } from './ChecklistSystem';
 import { getLevel2Shots, metricLabel, sequenceDuration, shotAt, type Level2Request, type ThreeMetricCategory } from './level2Timeline';
 import './level2.css';
+import { AlexCheckingSequence } from './AlexCheckingSequence';
 
 export type Level2AudioCue = 'ambience' | 'tick' | 'paper' | 'link' | 'tension';
 const SILENT_SOURCES: CinematicAudioSources<Level2AudioCue> = {};
@@ -86,6 +87,12 @@ export function Level2ConsequencesSequence({ request, elapsed, active = true, re
 
   if (!valid || !current) {
     return <div className="l2-scene l2-invalid" role="alert">This cinematic needs a supplied category, selected metrics and a supported preview segment. No result has been inferred.</div>;
+  }
+
+  if (id === 'checking') {
+    return <section className="l2-scene" aria-label="Alex checking cinematic" data-shot={id} data-request={request.requestId}>
+      <AlexCheckingSequence elapsed={time} reducedMotion={reduced} />
+    </section>;
   }
 
   const category = request.input.resultCategory as ThreeMetricCategory | undefined;

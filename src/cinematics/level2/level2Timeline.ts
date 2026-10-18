@@ -2,9 +2,9 @@ import type { CinematicRequest, MetricId } from '../../shared/contracts';
 
 export type Level2Request = Extract<CinematicRequest, { cinematicId: 'level2' }>;
 // Presentation segments for the independent prototype. These are NOT agreed gameplay phase names.
-export type PreviewSegment = 'three' | 'six' | '10' | '25' | '100' | 'final';
+export type PreviewSegment = 'three' | 'six' | '10' | '25' | '100' | 'final' | 'checking';
 export type ThreeMetricCategory = 'visible-behaviour-heavy' | 'quality-depth-heavy' | 'mixed-broad';
-export type ShotId = 'entry' | 'pattern' | 'three-checklist' | 'six-checklist' | 'expand' | 'ten' | 'twenty-five' | 'hundred' | 'perfect' | 'reflection' | 'priority';
+export type ShotId = 'entry' | 'pattern' | 'three-checklist' | 'six-checklist' | 'expand' | 'ten' | 'twenty-five' | 'hundred' | 'perfect' | 'reflection' | 'priority' | 'checking';
 export type Dialogue = { start: number; end: number; speaker: 'Alex' | 'You'; text: string };
 export type Shot = { id: ShotId; storyboard: string; duration: number; dialogue?: readonly Dialogue[] };
 
@@ -57,6 +57,7 @@ export function getLevel2Shots(request: Level2Request): readonly Shot[] {
     case '25': return [{ id: 'twenty-five', storyboard: 'CIN2-S08', duration: 5.1 }];
     case '100': return [{ id: 'hundred', storyboard: 'CIN2-S09', duration: 5.9 }, ...FINAL];
     case 'final': return FINAL;
+    case 'checking': return [{ id: 'checking', storyboard: 'CIN2-CHECKING-INSERT', duration: 4.2 }];
     default: return [];
   }
 }

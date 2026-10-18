@@ -12,8 +12,8 @@ const EXAMPLES: Record<string, { category: ThreeMetricCategory; metrics: readonl
   'quality-heavy': { category: 'quality-depth-heavy', metrics: METRICS.slice(3) },
   'mixed-broad': { category: 'mixed-broad', metrics: [METRICS[0], METRICS[3], METRICS[5]] },
 };
-const STATES = ['visible-heavy', 'quality-heavy', 'mixed-broad', 'six', '10', '25', '100', 'final', 'full'] as const;
-const STATE_LABELS = ['Visible', 'Quality', 'Mixed', 'Six', '10', '25', '100 + ending', 'Final conflict', 'Full chain'];
+const STATES = ['visible-heavy', 'quality-heavy', 'mixed-broad', 'six', '10', '25', '100', 'final', 'full', 'checking'] as const;
+const STATE_LABELS = ['Visible', 'Quality', 'Mixed', 'Six', '10', '25', '100 + ending', 'Final conflict', 'Full chain', 'Checking'];
 const HANDOFF: Record<PreviewSegment, string> = {
   three: 'Return to gameplay: add the remaining three metrics.',
   six: 'Return to gameplay: keep adding metrics.',
@@ -21,6 +21,7 @@ const HANDOFF: Record<PreviewSegment, string> = {
   '25': 'Return to gameplay: request 100 metrics.',
   '100': 'Return to Level 3 gameplay: priorities. No gameplay is connected.',
   final: 'Return to Level 3 gameplay: priorities. No gameplay is connected.',
+  checking: 'Three-shot checking study complete. No gameplay is connected.',
 };
 
 export default function Level2DevPreview() {
@@ -108,7 +109,7 @@ export default function Level2DevPreview() {
       <div className="l2-preview-viewport"><div className="l2-preview-stage">
         <Level2ConsequencesSequence key={request.requestId} request={request} elapsed={elapsed} active={playing && !completed && pageVisible} reducedMotion={query.get('reduced') === '1' ? true : undefined} onComplete={complete} />
       </div></div>
-      <footer className="l2-preview-footer" data-completion-count={events.length} data-completion-ids={events.map(e => e.requestId).join(',')}><p role="status" data-complete={completed}>{event}</p><p>INTERIM · Mock inputs only. Full chain simulates gameplay handoffs. Alex performance is blocked pending production layers; reference plates are not character animation.</p></footer>
+      <footer className="l2-preview-footer" data-completion-count={events.length} data-completion-ids={events.map(e => e.requestId).join(',')}><p role="status" data-complete={completed}>{event}</p><p>INTERIM · Mock inputs only. Checking previews one reusable three-shot Alex sequence; other Alex performances remain reference prototypes. Full chain simulates gameplay handoffs.</p></footer>
     </main>
   );
 }

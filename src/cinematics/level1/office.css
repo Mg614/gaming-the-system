@@ -1,0 +1,88 @@
+.l1-office {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  container-type: inline-size;
+  color: #fff4df;
+  background: #171a18;
+}
+
+.l1-office .office-camera { will-change: transform; }
+.l1-office .office-background { object-fit: fill; }
+.l1-office .notification { cursor: default; }
+.l1-office .email { overflow: hidden; }
+.l1-office .mail-content { overflow: hidden; }
+.l1-office .email h2 { margin-bottom: 0.5cqw; overflow-wrap: anywhere; }
+.l1-office .email p { margin-bottom: 0.5cqw; }
+.l1-office .l1-office-signature { color: #766453; font-size: 0.34cqw; }
+
+.l1-office .l1-office-result {
+  margin-top: 0.75cqw;
+  padding: 0.6cqw 0 0.2cqw;
+  border-top: 1px solid #b9cbb9;
+  color: #345c3e;
+  line-height: 1.4;
+}
+
+.l1-office .l1-office-result small,
+.l1-office .l1-office-result strong,
+.l1-office .l1-office-result > span { display: block; }
+.l1-office .l1-office-result small { font-size: 0.3cqw; color: #736f59; letter-spacing: 0.08em; }
+.l1-office .l1-office-result strong { margin: 0.13cqw 0 0.25cqw; font-size: 0.52cqw; }
+.l1-office .l1-office-result > span { font-size: 0.35cqw; letter-spacing: 0.08em; }
+.l1-office .l1-office-result > span > span { margin-right: 0.15cqw; }
+
+.l1-office .l1-office-warmth,
+.l1-office .l1-office-thought-shade { position: absolute; inset: 0; pointer-events: none; }
+.l1-office .l1-office-warmth { background: linear-gradient(110deg, #f6c579, transparent 58%, #758c92); mix-blend-mode: soft-light; }
+.l1-office .vignette { background: radial-gradient(ellipse at 44% 43%, transparent 38%, #0c100d66 100%); }
+.l1-office .l1-office-thought-shade { background: linear-gradient(180deg, transparent 43%, #141a1910 59%, #101713d9 100%); }
+
+.l1-office .l1-office-prediction {
+  position: absolute;
+  right: 7%;
+  top: 12%;
+  width: 25%;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+  color: #f8dfb8;
+  font: italic 1cqw/1.6 Georgia, serif;
+  text-shadow: 0 2px 12px #0d1414;
+}
+
+.l1-office .l1-office-prediction small { display: block; margin-bottom: 0.4cqw; color: #ddc2a1; font: 0.55cqw/1.5 Arial, sans-serif; letter-spacing: 0.16em; text-transform: uppercase; }
+
+.l1-office .l1-office-memory {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse at 50% 47%, #000 25%, #000d 60%, transparent 97%);
+}
+
+.l1-office .l1-office-concepts {
+  position: absolute;
+  bottom: 24%;
+  left: 15%;
+  right: 15%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.2cqw 2.5cqw;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  pointer-events: none;
+}
+
+.l1-office .l1-office-concepts li {
+  padding-top: 0.45cqw;
+  border-top: 1px solid #e7ceb63b;
+  color: #eee1cd;
+  font: 0.85cqw/1.6 Georgia, serif;
+  text-align: center;
+  text-shadow: 0 1px 7px #0b100e;
+}

@@ -1,0 +1,24 @@
+html:has(.l3b-preview) { background: #171512; color-scheme: dark; }
+body:has(.l3b-preview) { margin: 0; }
+.l3b-preview { max-width: 1500px; margin: auto; padding: 24px 32px; color: #eadcc8; font-family: system-ui, sans-serif; }
+.l3b-preview-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; gap: 20px; }
+.l3b-preview-header span { font-size: 10px; letter-spacing: .23em; color: #b8a286; }
+.l3b-preview-header h1 { font: 400 27px Georgia, serif; margin: 8px 0 0; }
+.l3b-preview-header p { font-size: 10px; letter-spacing: .1em; text-align: right; line-height: 1.7; }
+.l3b-preview-header small { letter-spacing: 0; color: #bda88e; }
+.l3b-screen { box-shadow: 0 20px 80px #0006; }
+.l3b-controls { padding: 20px 0; font-size: 12px; }
+.l3b-control-row { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; margin: 0 0 12px; }
+.l3b-controls label { display: flex; gap: 8px; align-items: center; color: #c9b79e; }
+.l3b-controls select, .l3b-controls button { border: 1px solid #6d5943; background: #29231c; border-radius: 4px; padding: 8px 10px; color: #eee0ca; font: inherit; }
+.l3b-controls button { cursor: pointer; }
+.l3b-controls button:hover { background: #443524; }
+.l3b-controls :focus-visible { outline: 2px solid #e6ba7c; outline-offset: 3px; }
+.l3b-controls input { accent-color: #c29c69; }
+.l3b-seek { flex: 1; min-width: 230px; }
+.l3b-seek input { flex: 1; }
+.l3b-controls output { font-variant-numeric: tabular-nums; color: #c3ad8e; }
+.l3b-handoff { display: flex; align-items: center; justify-content: space-between; gap: 16px; border-top: 1px solid #5e4b38; padding: 10px 0; }
+.l3b-controls details { border-top: 1px solid #44382b; margin-top: 16px; padding-top: 12px; color: #ab9b86; }
+.l3b-controls details p { max-width: 850px; line-height: 1.6; }
+@media(max-width:650px) { .l3b-preview { padding: 15px 10px; } .l3b-preview-header { gap: 8px; } .l3b-preview-header h1 { font-size: 22px; } .l3b-preview-header p { max-width: 120px; } .l3b-controls select { max-width: 240px; } .l3b-handoff { flex-direction: column; align-items: flex-start; } }

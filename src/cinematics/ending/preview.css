@@ -1,0 +1,27 @@
+.end-preview { min-height: 100vh; padding: 26px max(22px, calc((100vw - 1320px) / 2)) 36px; background: #0a0f17; color: #e9dbc8; font-family: system-ui, sans-serif; }
+.end-preview > header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+.end-preview > header p { font-size: 10px; letter-spacing: .2em; color: #b89b79; margin: 0 0 8px; }
+.end-preview > header h1 { font: 400 25px Georgia, serif; margin: 0; }
+.end-preview a { color: #c8b59b; font-size: 13px; }
+.end-preview button, .end-preview select { color: #ead7bc; background: #18212b; border: 1px solid #b898633f; padding: 8px 13px; border-radius: 2px; font: 12px system-ui, sans-serif; }
+.end-preview button { cursor: pointer; }
+.end-preview button:hover { background: #2f302f; }
+.end-preview button:focus-visible, .end-preview select:focus-visible, .end-preview input:focus-visible { outline: 2px solid #e5c18d; outline-offset: 3px; }
+.end-preview button:disabled { opacity: .45; cursor: default; }
+.end-controls { margin-top: 20px; }
+.end-controls-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.end-controls label { display: flex; align-items: center; gap: 10px; font-size: 12px; margin-left: 10px; }
+.end-controls output { margin-left: auto; font: 12px ui-monospace, monospace; color: #bca98f; }
+.end-controls input[type=range] { margin: 18px 0 0; width: 100%; accent-color: #cba773; }
+.end-playback-state { font: 11px ui-monospace, monospace; color: #a39481; margin: 8px 0 0; }
+.end-preview footer { border-top: 1px solid #d1ae7626; margin-top: 24px; padding-top: 18px; font-size: 11px; color: #9ca4aa; line-height: 1.6; }
+.end-preview footer output { margin-right: 24px; font-family: ui-monospace, monospace; }
+.end-preview-options { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+.end-preview-options label { display: flex; align-items: center; gap: 8px; }
+.end-preview-options input { accent-color: #cfaa76; }
+.end-design-lab { min-height: 55vh; padding: 15vh 20px; text-align: center; background: radial-gradient(ellipse, #392d2329, #080c12 75%); }
+.end-design-lab > span { font-size: 10px; letter-spacing: .25em; color: #ad9070; }
+.end-design-lab h2 { font: 400 44px Georgia, serif; }
+.end-design-lab p { font-size: 13px; color: #b7ada0; margin-bottom: 26px; }
+.end-preview .end-handoff-button { background: #0c111af5; border: 0; border-top: 1px solid #dbb98355; font-size: clamp(8px, 1vw, 13px); letter-spacing: .19em; padding: 1.1% 0; border-radius: 0; }
+@media (max-width: 680px) { .end-preview { padding: 18px 12px; }.end-preview > header h1 { font-size: 21px; }.end-controls label { margin: 0; }.end-controls select { max-width: 230px; }.end-preview-options { gap: 14px; } }

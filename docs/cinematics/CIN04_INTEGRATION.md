@@ -45,7 +45,67 @@ The integration teammate supplies immutable prior results and the real Level 3
 memory renderer. The local Ending input is a presentation proposal; shared
 gameplay contracts remain untouched pending joint integration.
 
-## Checkpoint
+## Preview and integration
 
-Approved sources, committed leaf components and their assets recovered.
-Type checking passed before this checkpoint. Ending implementation follows.
+Development preview: `http://127.0.0.1:5178/?cinematic=ending`.
+Optional `scene=office`, `scene=goodhart`, `scene=recap`, `frame=660`, or
+`reduced=1` query parameters support direct inspection. The preview starts paused.
+The separate Studio entry is `src/cinematics/ending/StudioRoot.tsx`.
+
+Mount `EndingTheoryRevealSequence` with `input`, `WeightMemory`, `reducedMotion`,
+`onComplete`, and `onHandoff`. Supply the player's prior results; Ending never
+calculates them. Give each intentional replay a fresh `input.requestId`.
+`onComplete` emits `animationComplete` once per mounted request after playback
+ends; seeking alone does not emit it. Repeated ends within the same request are
+ignored. `onHandoff` emits `design_lab_requested` once after the final button's
+fade. The integration owner routes that event to the actual Design Lab.
+The final frame remains visible. Development controls are optional and hidden
+by default. The production entry excludes the development preview and fixtures.
+
+## Changed implementation files explained
+
+| File | Purpose |
+| --- | --- |
+| `src/main.tsx` | Opens the independent Ending preview only during development. |
+| `src/cinematics/ending/endingTimeline.ts` | Holds the 12 shot timings, approved lines and once-only completion guard. |
+| `src/cinematics/ending/types.ts` | Describes the results and notifications exchanged with the integration owner. |
+| `src/cinematics/ending/EndingComposition.tsx` | Selects the visible shot from the current frame. |
+| `src/cinematics/ending/EndingMemories.tsx` | Arranges existing Level 1, checklist and comparison renderers into memories. |
+| `src/cinematics/ending/OfficeReveal.tsx` | Preserves the Opening office perspective and reveals the question and theory. |
+| `src/cinematics/ending/ending.css` | Styles only Ending, including a scale-independent checklist crop. |
+| `src/cinematics/ending/EndingTheoryRevealSequence.tsx` | Owns playback, seek, completion and final handoff controls. |
+| `src/cinematics/ending/EndingDevPreview.tsx` | Supplies inspection controls and visible notification counters. |
+| `src/cinematics/ending/devInput.tsx` | Isolates sample results and approved reference crops from production. |
+| `src/cinematics/ending/preview.css` | Styles the development controls outside the cinematic. |
+| `src/cinematics/ending/StudioRoot.tsx` | Provides an independent frame inspection entry. |
+| `scripts/test-ending.mjs` | Checks timeline coverage, reveal order, completion, upstream integrity and production isolation. |
+| `docs/cinematics/CIN04_INTEGRATION.md` | Records provenance, file roles, integration and validation limits. |
+
+## Validation and remaining limits
+
+- Type checking and production build pass; the build reports existing
+  Framer Motion ignored `use client` directive warnings.
+- Five automated checks pass. Run the build before the test script, which inspects
+  its output. The upstream integrity test uses source commits available locally.
+- The timeline covers all 1746 frames at 30 fps: 58.2 seconds, 12 shots.
+- Office artwork and first-person perspective are the original Opening assets.
+- Development Level 3 images are approved reference crops, not the live CIN-03A
+  renderer. Replace the injected memory component during final integration.
+- Audio was not supplied. No narration or soundtrack has been invented.
+- Design Lab is a development destination only. Gameplay and shared contracts
+  are unchanged. Human visual approval remains pending.
+
+### Browser screening (2026-10-20)
+
+All 12 shot samples inspected in the actual browser. Normal-speed playback,
+pause/resume, replay, seek, final-frame retention and Design Lab handoff verified.
+Completion remains 1 after seeking backward and playing to the end again;
+handoff reaches 1. Reduced-motion replay is separately screened.
+The checklist framing fix is scoped to Ending and keeps the live pen and marks.
+
+The local preview server had stopped across the interrupted session; restarting
+it and reloading restored playback. Earlier connection/module-load errors belong
+to that stopped-server state. Image decode warnings were logged while switching
+scenes; inspected visible images loaded successfully and playback continued.
+This is not a clean-warning browser run; final integration should recheck those
+warnings in its target browser. No playback error alert appeared in the screening.
